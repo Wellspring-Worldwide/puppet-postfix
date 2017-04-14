@@ -908,10 +908,8 @@ smtpd_recipient_restrictions =
 <% @smtpd_recipient_restrictions.each do |line| -%>
   <%= line %>,
 <% end -%>
-<% if @postgrey_policy_service -%>
+<% if @postgrey_policy_service and @postgrey -%>
   check_policy_service <%= @postgrey_policy_service %>,
-<% else -%>
-  check_policy_service unix:postgrey/socket,
 <% end -%>
 
 <% end -%>
